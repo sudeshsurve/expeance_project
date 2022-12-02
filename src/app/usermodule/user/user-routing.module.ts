@@ -12,14 +12,14 @@ import { UserListComponent } from './user-list/user-list.component';
 const routes: Routes = [
   {path :"" , component:AdminComponent,
   children:[
-  {path:"" , pathMatch:'full' , redirectTo:'/admin/dashbord' },
-  {path:"dashbord", component:DashbordComponent },
-  {path:"user-list", component:UserListComponent },
-  {path:"user-form", component:UserFormComponent },
-  {path:"expense-report", component:ExpenseReportComponent },
-  {path:"expense-list", component:ExpenseListComponent },
-  {path:"totla-expense-report", component:TotalExpenseReportComponent },
-  {path:"expense-form", component:ExpenseFormComponent },
+    {path:"dashbord", component:DashbordComponent },
+    {path:"user-list", component:UserListComponent },
+    {path:"user-form", component:UserFormComponent },
+    {path:"expense-report", component:ExpenseReportComponent },
+    {path:"expense-list", component:ExpenseListComponent },
+    {path:"totla-expense-report", component:TotalExpenseReportComponent },
+    {path:"expense-form", component:ExpenseFormComponent },
+    {path:"" , pathMatch:'full' , redirectTo:'/admin/dashbord' },
 
   ]
 

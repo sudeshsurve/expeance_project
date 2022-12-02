@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -8,20 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  sign_in_form_data:any ={
-    username:'',
-    password:'',
-    // checkbox: true
-  }
+  public success_msg : undefined | boolean = false
+  registerForm! : FormGroup
+  submitted = false
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  
 
-
-  constructor(public router :Router) { }
-
+  constructor(public router :Router, public formbuilder : FormBuilder) { 
+  this.registerForm = this.formbuilder.group({
+    Name : ['' ,[ Validators.required , Validators.minLength(4)]],
+      email : ['' ,[ Validators.required , Validators.email , Validators.pattern(this.emailPattern)]],
+      password : ['' , [ Validators.required , Validators.minLength(6)]]
+  })
+}
   ngOnInit(): void {
-    console.log("sign-up");
-    
+  
   }
-  sign_in() {
+  onSubmit(data:any) {
+  console.log(data);
   
   }
 

@@ -11,6 +11,7 @@ import { ExpenseFormComponent } from './expense-form/expense-form.component';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
 import { TotalExpenseReportComponent } from './total-expense-report/total-expense-report.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,8 @@ import { DashbordComponent } from './dashbord/dashbord.component';
   imports: [
     CommonModule,
     UserRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
    
   ]
 })

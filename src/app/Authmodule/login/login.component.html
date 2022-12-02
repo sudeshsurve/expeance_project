@@ -1,19 +1,26 @@
-<div class="container mt-5">
-    <form class="card p-5">
+<div class="container "> 
+    <form class="card p-5"  [formGroup]="loginform" (ngSubmit)="onsubmit(loginform.value)">
         <h2 >Login</h2>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <input type="email" formControlName="username" class="form-control" [ngClass]="{'is-invalid':submitted && loginform.controls.username.errors }" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div *ngIf="submitted && loginform.controls.username.errors">
+            <span *ngIf="submitted && loginform.controls.username.errors.required">*username is Requried</span>
+            <span *ngIf="submitted && loginform.controls.username.errors.pattern">*Username is Not Valid</span>
+       </div>
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input [ngClass]="{'is-invalid':submitted && loginform.controls.password.errors }" formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+          <div *ngIf="submitted && loginform.controls.password.errors">
+            <span *ngIf="submitted && loginform.controls.password.errors.required">*password is Requried</span>
+            <span *ngIf="submitted && loginform.controls.password.errors.minlength">*Password shuld be atleast 6 charcters</span>
+       </div>
         </div>
         <div class="mb-3">
            <a routerLink="/sign-up">Create Account</a>
           <!-- <label class="form-check-label" for="exampleCheck1">Check me out</label> -->
         </div>
-        <button type="submit" class="btn btn-primary" (click)="singIn()"><b>Sign IN</b></button>
+        <button type="submit" class="btn btn-primary" ><b>Sign IN</b></button>
       </form>
 </div>

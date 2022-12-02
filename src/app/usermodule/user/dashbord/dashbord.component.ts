@@ -9,14 +9,12 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./dashbord.component.css']
 })
 export class DashbordComponent implements OnInit {
-  dashbordata :any=[]
+ 
   //  fayoutube = faYoutube
   constructor(private userservise : UserService ) { }
 
   ngOnInit(): void { 
-    this.dashbordata = this.userservise.dashbord
-  console.log(this.dashbordata);
-  
+    
   }
   //  this.dashbordata = this.userservise.dash 
 }
