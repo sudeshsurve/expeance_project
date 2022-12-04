@@ -3,10 +3,10 @@
         <h2 >Login</h2>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" formControlName="username" class="form-control" [ngClass]="{'is-invalid':submitted && loginform.controls.username.errors }" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div *ngIf="submitted && loginform.controls.username.errors">
-            <span *ngIf="submitted && loginform.controls.username.errors.required">*username is Requried</span>
-            <span *ngIf="submitted && loginform.controls.username.errors.pattern">*Username is Not Valid</span>
+          <input type="email" formControlName="email" class="form-control" [ngClass]="{'is-invalid':submitted && loginform.controls.email.errors }" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div *ngIf="submitted && loginform.controls.email.errors">
+            <span *ngIf="submitted && loginform.controls.email.errors.required">*email is Requried</span>
+            <span *ngIf="submitted && loginform.controls.email.errors.pattern">*email is Not Valid</span>
        </div>
         </div>
         <div class="mb-3">

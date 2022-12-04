@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-expense-form',
@@ -6,10 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./expense-form.component.css']
 })
 export class ExpenseFormComponent implements OnInit {
-
-  constructor() { }
+ expense_form : FormGroup
+ submitted = false
+  constructor(private fb : FormBuilder , private userservise : UserService) { }
 
   ngOnInit(): void {
+    this.expense_form = this.fb.group({
+      date : ['' , Validators.required],
+      username : ['' , Validators.required],
+      head : ['' , Validators.required],
+      amount : [ , Validators.required],
+       paid_to: ['' , Validators.required],
+      
+  })
+  }
+
+  submit(){
+    this.submitted = true
+    if(this.expense_form.valid){
+      this.userservise.post_expense_data(this.expense_form.value)
+      this.submitted = false
+      this.expense_form.reset()
+    }
   }
 
 }

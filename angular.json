@@ -104,5 +104,8 @@
       }
     }
   },
-  "defaultProject": "expeance_project"
+  "defaultProject": "expeance_project",
+  "cli": {
+    "analytics": false
+  }
 }

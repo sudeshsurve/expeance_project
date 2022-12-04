@@ -1,1 +1,79 @@
-<p>expense-form works!</p>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-6 card p-4">
+            <h2><b>Expense Form</b></h2>
+            <form [formGroup]="expense_form" (ngSubmit)="submit()">
+                <div class="row">
+                    <div class="col col-sm-6 col-mb-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Date</label>
+                            <input type="date" [ngClass]="{'is-invalid':submitted && expense_form.controls.date.errors }" formControlName="date" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                                <div *ngIf="submitted && expense_form.controls.date.errors">
+                                    <span  *ngIf="submitted && expense_form.controls.date.errors.required" class="form-text">*date is required</span>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-6 col-mb-6">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">userName</label>
+                            <input type="text" [ngClass]="{'is-invalid':submitted && expense_form.controls.username.errors }" formControlName="username" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                                <div *ngIf="submitted && expense_form.controls.username.errors">
+
+                                    <span  *ngIf="submitted && expense_form.controls.username.errors.required" class="form-text">*username is required</span>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Head</label>
+                    <select id="disabledSelect"  formControlName="head" [style.background]="expense_form.get('head')?.invalid? '#ff000038' : 'white'"  class="form-select">
+                        <option>Food</option>
+                        <option>Travel</option>
+                        <option>Other</option>
+                      </select>
+                      <div *ngIf="submitted && expense_form.controls.head.errors">
+                          <span  *ngIf="submitted && expense_form.controls.head.errors.required" class="form-text">*head is required</span>
+
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Amount</label>
+                            <input type="number" [ngClass]="{'is-invalid':submitted && expense_form.controls.amount.errors }" formControlName="amount" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                                <div *ngIf="submitted && expense_form.controls.amount.errors">
+                                    <span  *ngIf="submitted && expense_form.controls.amount.errors.required" class="form-text">*amount is required</span>
+
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Paid To</label>
+                            <input type="text" [ngClass]="{'is-invalid':submitted && expense_form.controls.paid_to.errors }" formControlName="paid_to" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                                <div *ngIf="submitted && expense_form.controls.paid_to.errors">
+                                    <span  *ngIf="submitted && expense_form.controls.paid_to.errors.required" class="form-text">*Paid to is required</span>
+                                </div>
+                        </div>
+                    </div>
+                </div>  
+
+                <!-- <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Role</label>
+                  <select id="disabledSelect" class="form-select">
+                    <option>select</option>
+                    <option>admin</option>
+                    <option>manager</option>
+                    <option>employe</option>
+                  </select>
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

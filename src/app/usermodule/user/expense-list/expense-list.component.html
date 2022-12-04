@@ -1,1 +1,36 @@
-<p>expense-list works!</p>
+<div class="container mt-4">
+    <h1>Expense List</h1>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Paid To</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let expense of exp_data; let a=index">
+                        <th scope="row"> {{a+1}} </th>
+                        <td> {{expense.date | date }} </td>
+                        <td>{{expense.head}}</td>
+                        <td>{{expense.amount}}</td>
+                        <td>{{expense.paid_to}}</td>
+                        <td>{{expense.username}}</td>
+                        <td class="d-flex gap-2">
+                            <button  class="btn btn-success btn-sm" (click)="approve(expense._id)" >Approve </button>
+                            <button class="btn btn-danger btn-sm">Reject </button>
+                        </td>
+                    </tr>   
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
