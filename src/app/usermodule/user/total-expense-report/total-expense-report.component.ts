@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-total-expense-report',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TotalExpenseReportComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userservice : UserService) { }
 
   ngOnInit(): void {
+      this.get_total_expense()
   }
+
+  get_total_expense(){
+ this.userservice.total_expense().subscribe((res)=>{
+  console.log(res);
+ })
+
+
+  }
+
+
 
 }

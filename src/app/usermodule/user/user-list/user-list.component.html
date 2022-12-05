@@ -1,6 +1,12 @@
 <div class="container mt-5">
+  <div class="d-flex justify-content-end" *ngIf="this.userservice.get_user_info().role == 'admin'">
+    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add User
+</button>  
+  </div>
+
 <table class="table">
-    <thead>
+    <thead> 
       <tr>
         <th scope="col">#</th>
         <th scope="col">UserName</th>
@@ -9,11 +15,11 @@
         <th scope="col">city</th>
         <th scope="col">Email</th>
         <th scope="col">Role</th>
-        <th scope="col">Action</th>
+        <th scope="col" *ngIf="this.userservice.get_user_info().role == 'admin'">Action</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let x of users ; let i = index">      
+    <tbody *ngIf="users$ | async as userdata">
+      <tr *ngFor="let x of userdata ; let i = index">      
         <th scope="row">{{i+1}}</th>
         <td>{{x.username}}</td>
         <td>{{x.age}}</td>
@@ -21,7 +27,7 @@
         <td>{{x.city}}</td>
         <td>{{x.email}}</td>
         <td>{{x.role}}</td>
-        <td class="d-flex gap-3">
+        <td class="d-flex gap-3" *ngIf="this.userservice.get_user_info().role == 'admin'">
     <button class="btn btn-primary bnt-sm">Edit</button>
     <button class="btn btn-danger brn-sm">Delete</button>
         </td>
@@ -31,4 +37,4 @@
 </div>
 
 
-
+<app-user-form></app-user-form>

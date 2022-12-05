@@ -13,7 +13,7 @@
           <tbody>
             <tr *ngFor="let head of heads">
               <th scope="row">{{head}}</th>     
-              <td scope="col" *ngFor="let month of months"> {{ data[month] ? (data[month][head] || 0) : 0 }} </td>
+              <td scope="col" *ngFor="let month of months"> {{ data[month] ? (data[month][head] || 0  | currency :'INR') : 0 }} </td>
             </tr>
           </tbody>
         </table>
@@ -21,3 +21,7 @@
     </div>
   </div>
 
+
+  <!-- <div class="container" *ngIf="user_exp_report.length == 0">
+    <h1>Expense Report Empty</h1>
+  </div> -->

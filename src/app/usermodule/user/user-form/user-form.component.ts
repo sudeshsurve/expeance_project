@@ -7,18 +7,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
-  expense_form : FormGroup
+ userform: FormGroup
    
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-   this.expense_form = this.fb.group({
-       date : ['' , Validators.required],
+   this.userform= this.fb.group({
+       email : ['' , Validators.required],
        username : ['' , Validators.required],
-       head : ['' , Validators.required],
-       amount : ['' , Validators.required],
-        paid_to: ['' , Validators.required],
-        approve :false
+       password : ['' , Validators.required],
+       gender : ['' , Validators.required],
+        role: ['' , Validators.required],
+        city: ['' , Validators.required],
+       
    })
 
   }

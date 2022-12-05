@@ -11,7 +11,7 @@ import { UserService } from 'src/app/service/user.service';
 export class DashbordComponent implements OnInit {
  
   //  fayoutube = faYoutube
-  constructor(private userservise : UserService ) { }
+  constructor(public userservise : UserService ) { }
 
   ngOnInit(): void { 
     

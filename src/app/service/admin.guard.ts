@@ -14,7 +14,7 @@ export class AdminGuard implements CanActivate {
      let token =  JSON.parse(this.authservice.getToken()) 
      const result = atob(token.split('.')[1])
      let data = JSON.parse(result)
-     console.log(data.role);
+     
      if(data.role === 'admin' || data.role === 'manager'){
       return true
      }

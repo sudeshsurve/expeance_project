@@ -10,6 +10,7 @@ import { UserService } from 'src/app/service/user.service';
 export class ExpenseFormComponent implements OnInit {
  expense_form : FormGroup
  submitted = false
+ error :  Error | null = null
   constructor(private fb : FormBuilder , private userservise : UserService) { }
 
   ngOnInit(): void {
@@ -18,18 +19,29 @@ export class ExpenseFormComponent implements OnInit {
       username : ['' , Validators.required],
       head : ['' , Validators.required],
       amount : [ , Validators.required],
-       paid_to: ['' , Validators.required],
+      paid_to: ['' , Validators.required],
       
   })
+
+      
+
+
   }
 
   submit(){
-    this.submitted = true
+    try {
+      this.submitted = true
     if(this.expense_form.valid){
-      this.userservise.post_expense_data(this.expense_form.value)
+      this.userservise.post_expense_data(this.expense_form.value )
       this.submitted = false
       this.expense_form.reset()
     }
+    } catch (error) {
+      if(error instanceof Error){
+      this.error = error
+      }
+    }
+    
   }
 
 }

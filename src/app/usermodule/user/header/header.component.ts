@@ -13,6 +13,8 @@ export class HeaderComponent implements OnInit {
   }
   logout(){
     localStorage.removeItem('token')
+    localStorage.removeItem('role')
+    localStorage.removeItem('userID')
     this.router.navigate(['./login'])
   }
 }

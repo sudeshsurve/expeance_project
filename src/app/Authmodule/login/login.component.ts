@@ -36,10 +36,8 @@ export class LoginComponent implements OnInit {
 
     // this.router.navigate(['/admin'])
     if(this.loginform.valid){
-this.authservise.login(this.loginform.value)
+this.authservise.login(data)
       // this.loginform.reset()
     }
- 
-    
   }
 }

@@ -15,7 +15,7 @@ const routes: Routes = [
   {path :"" , component:AdminComponent,
   children:[
     {path:"dashbord", component:DashbordComponent },
-    {path:"user-list", component:UserListComponent , canActivate:[AdminGuard] },
+    {path:"user-list", component:UserListComponent ,  },
     {path:"user-form", component:UserFormComponent , canActivate:[AdminGuard] },
     {path:"expense-report", component:ExpenseReportComponent },
     {path:"expense-list", component:ExpenseListComponent , canActivate:[ManagerAccessGuard] },
