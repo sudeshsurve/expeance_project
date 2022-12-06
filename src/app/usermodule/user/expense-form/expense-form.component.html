@@ -17,8 +17,10 @@
                     <div class="col col-sm-6 col-mb-6">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">userName</label>
-                            <input type="text" [ngClass]="{'is-invalid':submitted && expense_form.controls.username.errors }" formControlName="username" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
+                            <select id="disabledSelect"   formControlName="username" [style.background]="expense_form.get('username')?.invalid? '#ff000038' : 'white'"  class="form-select">
+                                <option *ngFor="let x of username" value="{{x}}">{{x}}</option>
+                              </select>
+                               
                                 <div *ngIf="submitted && expense_form.controls.username.errors">
 
                                     <span  *ngIf="submitted && expense_form.controls.username.errors.required" class="form-text">*username is required</span>

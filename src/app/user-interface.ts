@@ -5,5 +5,6 @@ export interface user {
     age:number ,
     gender:string ,
     city:string  ,
-    role : string
+    role : string,
+    state : string
 }

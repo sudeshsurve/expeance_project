@@ -17,6 +17,11 @@ export class UserService {
       console.log(res);
     })
   }
+
+post_user_data(body:user){
+  return this.http.post('http://localhost:3000/user/user_post' , body).pipe(catchError(err => of("something went wrong")))
+}
+
   get_user_expenses() {
     let token = JSON.parse(localStorage.getItem('token') || '{}')
     const httpheaders = new HttpHeaders({
@@ -41,8 +46,15 @@ export class UserService {
   total_expense (){
     return this.http.get('http://localhost:3000/exp/totla-expense-report').pipe(catchError(err => of([])))
   }
+     
 
+  get_states (){
+    return this.http.get('http://localhost:3000/user/states')
+  }
 
+   get_city(state:any){
+    return this.http.get(`http://localhost:3000/user/cities/${state}`)
+   }
   show_individual_user_data(expenses:any[],username?:string){
     let temp_array = []
     if(username){

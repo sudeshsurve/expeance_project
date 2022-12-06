@@ -19,7 +19,7 @@ const routes: Routes = [
     {path:"user-form", component:UserFormComponent , canActivate:[AdminGuard] },
     {path:"expense-report", component:ExpenseReportComponent },
     {path:"expense-list", component:ExpenseListComponent , canActivate:[ManagerAccessGuard] },
-    {path:"totla-expense-report", component:TotalExpenseReportComponent },
+    {path:"totla-expense-report", component:TotalExpenseReportComponent, canActivate:[ManagerAccessGuard]  },
     {path:"expense-form", component:ExpenseFormComponent },
     {path:"" , pathMatch:'full' , redirectTo:'/admin/dashbord' },
 

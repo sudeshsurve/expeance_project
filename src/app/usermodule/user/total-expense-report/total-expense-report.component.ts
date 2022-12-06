@@ -7,21 +7,30 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./total-expense-report.component.css']
 })
 export class TotalExpenseReportComponent implements OnInit {
-
+  total_exp : any []
+  months:any[] = []
+  heads : any[]= [ ]
+  data :any = {}
   constructor(private userservice : UserService) { }
 
   ngOnInit(): void {
-      this.get_total_expense()
-  }
-
-  get_total_expense(){
- this.userservice.total_expense().subscribe((res)=>{
-  console.log(res);
- })
-
-
+      this.total_exp_report()
   }
 
 
+  total_exp_report(){
+    this.userservice.total_expense().subscribe((res:any)=>{
+      this.total_exp = res
+      console.log(this.total_exp);
+      
+      if(this.total_exp.length > 0){
+        const calulated_expense  = this.userservice.show_individual_user_data(this.total_exp)
+        this.months = calulated_expense.months
+        this.data = calulated_expense.data
+        this.heads = calulated_expense.heads
+
+      }
+     })
+  }
 
 }
