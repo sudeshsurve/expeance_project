@@ -12,6 +12,9 @@ export class ExpenseListComponent implements OnInit {
 
   ngOnInit(): void {
    this.userservise.get_all_expense().subscribe((res:any)=>{
+    if(res.message ==='no data found'){
+   return 
+    }
     this.exp_data = res
    })
 

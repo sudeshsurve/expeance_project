@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div *ngIf=" user_exp_report.length > 0" class="container mt-4">
     <h1>Expense Report</h1> <button (click)="user_report()">Get Data</button>
     <br>
     <div class="row">
@@ -13,7 +13,7 @@
           <tbody>
             <tr *ngFor="let head of heads">
               <th scope="row">{{head}}</th>     
-              <td scope="col" *ngFor="let month of months"> {{ data[month] ? (data[month][head] || 0) : 0 }} </td>
+              <td scope="col" *ngFor="let month of months"> {{ data[month] ? (data[month][head]   || 0 | currency :'INR' )  : 0}} </td>
             </tr>
           </tbody>
         </table>
@@ -21,3 +21,6 @@
     </div>
   </div>
 
+<div *ngIf=" user_exp_report.length < 1" class="container">
+  <h2>No data</h2>
+</div>
